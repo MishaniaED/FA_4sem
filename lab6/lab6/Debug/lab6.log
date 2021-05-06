@@ -1,0 +1,7 @@
+﻿  Source.cpp
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab6\lab6\Source.cpp(8,21): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab6\lab6\Source.cpp(76,13): warning C4129: e: неизвестная escape-последовательность
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab6\lab6\Source.cpp(198,13): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab6\lab6\Source.cpp(326,16): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab6\lab6\Source.cpp(308,6): warning C4101: j: неиспользованная локальная переменная
+  lab6.vcxproj -> C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab6\Debug\lab6.exe
