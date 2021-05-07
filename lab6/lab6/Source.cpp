@@ -7,6 +7,7 @@ using namespace std;
 
 float epsilon = 1E-6;
 void swap(float* arr1, float* arr2, int size);
+int factorial(int n);
 
 class square_matrix : public TeX_Convertible {
 private:
@@ -60,7 +61,7 @@ public:
 
 	string convert() const {
 		string output = "\n";
-		output += "\\begin{array}{cccc}\n";
+		output += "$\\begin{pmatrix}\n";
 		for (int i = 0; i < dimension; i++)
 		{
 			for (int j = 0; j < dimension; j++)
@@ -73,11 +74,11 @@ public:
 			output += "\\";
 			output += "\n";
 		}
-		output += "\end{array}";
+		output += "\\end{pmatrix}$";
 		return output;
 	}
 
-	float* operator[](int subscript);									// èíäåêñèðîâàíèå
+	float* operator[](int subscript);									// Ð¸Ð½Ð´ÐµÐºÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ
 	square_matrix operator+=(const square_matrix& matrix);
 	square_matrix operator-=(const square_matrix& matrix);
 	square_matrix operator*=(const square_matrix& matrix);
@@ -125,9 +126,23 @@ square_matrix square_matrix::operator*=(const square_matrix& matrix) {
 		cerr << "matrices of different sizes!\n";
 		exit(-6);
 	}
-	for (int row = 0; row < matrix.dimension; row++)
-		for (int col = 0; col < matrix.dimension; col++)
-			elems[row][col] *= matrix.elems[row][col];
+	if (matrix.dimension == 1) {
+		for (int row = 0; row < matrix.dimension; row++)
+			for (int col = 0; col < matrix.dimension; col++)
+				elems[row][col] *= matrix.elems[0][0];
+	}
+	else if(dimension == 1){
+		for (int row = 0; row < matrix.dimension; row++)
+			for (int col = 0; col < matrix.dimension; col++)
+				matrix.elems[row][col] *= elems[0][0];
+		return matrix;
+	}
+	else{
+		for (int row = 0; row < matrix.dimension; row++)
+			for (int col = 0; col < matrix.dimension; col++)
+				elems[row][col] *= matrix.elems[row][col];
+	}
+	
 
 	return *this;
 }
@@ -302,34 +317,41 @@ float treck(const square_matrix& matrix) {
 	return trace;
 }
 
-square_matrix exp(const square_matrix& matrix) {
-	square_matrix ans(matrix.dimension);
-	square_matrix tmp(matrix.dimension);
-	int j;
-	for (int i = 0; i < matrix.dimension; i++) {
-		ans[i][i] = matrix.elems[i][i];
-	}
-	square_matrix cpy(matrix);
-	float max;
-	float fac;
-	int	ind;
+int factorial(int n){
+	if (n == 0)
+		return 1;
+	else
+		return n * factorial(n - 1);
+}
 
-	fac = 1;
-	max = matrix.elems[0][0];
-	for (int i = 0; i < matrix.dimension; i++)
-		for (int j = 0; j < matrix.dimension; j++)
-			if (max < matrix.elems[i][j])
-				max = matrix.elems[i][j];
-	ind = 2;
-	while (abs(max) > float(epsilon))
-	{
-		ans += cpy * fac;
-		cpy *= matrix;
-		fac /= ind;
-		max /= ind;
-		ind++;
+square_matrix exp(const square_matrix& matrix) {
+	square_matrix identity_matrix(matrix);
+	for (int i = 0; i < matrix.dimension;i++) {
+		for (int j = 0; j < matrix.dimension; j++) {
+			if (i == j) identity_matrix[i][j] = 1;
+			else identity_matrix[i][j] = 0;
+		}
 	}
-	return ans;
+	
+	/*for (int i = 0; i < matrix.dimension; i++){
+		identity_matrix.elems[i][i] = 1;
+	}*/
+	square_matrix exp_matrix(matrix.dimension);
+	square_matrix tmp_matrix(matrix);
+	for (int i = 0; i < matrix.dimension; i++)
+	{
+		square_matrix fac(1);
+		fac[0][0] = (float(1) / factorial(i));
+		exp_matrix +=  tmp_matrix * fac;
+		tmp_matrix *= matrix;
+	}
+	/*for (int i = 0; i < exp_matrix.dimension; i++) {
+		for (int j = 0; j < exp_matrix.dimension; j++) {
+			if (i == j) exp_matrix[i][j] += 1;
+		}
+	}*/
+	exp_matrix += identity_matrix;
+	return (exp_matrix);
 }
 
 istream& operator >> (istream& in, const square_matrix& matrix)
@@ -385,15 +407,15 @@ int main() {
 
 	while (fin >> d)
 	{
-		// ìàòðèöà
+		// Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ð°
 		square_matrix matrix{ d };
 		fin >> matrix;
 
-		// îïåðàöèÿ
+		// Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ñ
 
 		fin >> oper;
 		square_matrix tmp(matrix);
-		//ìàòðèöà èëè åå îòñòóòñâèå
+		//Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ð° Ð¸Ð»Ð¸ ÐµÐµ Ð¾Ñ‚ÑÑ‚ÑƒÑ‚ÑÐ²Ð¸Ðµ
 		if (oper == "+=") {
 			fin >> d;
 			square_matrix matrix2{ d };
@@ -469,8 +491,10 @@ int main() {
 			fout << treck(matrix) << "\n";
 		}
 		else if (oper == "exp") {
-			fout << exp(matrix) << "\n";
+			fout << exp(matrix).convert() << "\n";
 		}
 	}
+	fout.close();
+	fin.close();
 	return 0;
 }
