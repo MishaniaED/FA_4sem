@@ -1,0 +1,17 @@
+(-8ab+5y) += (-ab+ab+ab+z)
+(12x+5y) + (3x+z)
+
+(3x+5y) -= (3x+z)
+(12x+5y) - (3x+z)
+
+(5x+5y) *= (3x+z)
+(5x+5y) * (3x+z)
+
+(12x+5y) == (12x+5y)
+(12x+5y) != (3x+z)
+
+check_homogeneity (12x+5y)
+check_harmony (2x^3y-2y^3x)
+
+(6x^2) / "x"
+(6x^2y+x) /= "xy"

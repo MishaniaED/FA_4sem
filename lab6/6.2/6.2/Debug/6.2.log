@@ -1,0 +1,11 @@
+﻿  Polynom.cpp
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\6.2\6.2\Monom.h(52,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\6.2\6.2\Monom.h(59,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\6.2\6.2\Polynom.h(41,22): warning C4018: <: несоответствие типов со знаком и без знака
+  Source.cpp
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\6.2\6.2\Monom.h(52,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\6.2\6.2\Monom.h(59,32): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\6.2\6.2\Polynom.h(41,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\6.2\6.2\Source.cpp(116,23): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+  6.2.vcxproj -> C:\Users\misha\source\repos\ВУЗ\4sem\Fund\6.2\Debug\6.2.exe
