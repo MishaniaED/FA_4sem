@@ -1,7 +1,5 @@
 #include "binary_tree.h"
 
-/* TEMPLATE RED_BLACK-TREE CLASS */
-
 template <typename T>
 class RB_tree : public Binary_tree<T>
 {
