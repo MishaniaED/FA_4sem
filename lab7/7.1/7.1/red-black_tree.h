@@ -1,78 +1,89 @@
+#pragma once
 #include "binary_tree.h"
 
+using namespace std;
+
+// Красно-черное дерево
 template <typename T>
-class RB_tree : public Binary_tree<T>
+class Red_black_tree : public Binary_tree<T>
 {
 private:
-	enum color {RED, BLACK};
-	
-	struct	tree_node
-	{
-		T	key;
-		int	color;
-		tree_node* left;
-		tree_node* right;
-		tree_node* parent;
-	};
+    enum color { RED, BLACK };
+
+    struct tree_node
+    {
+        int	color;
+        T data;
+        tree_node* left;
+        tree_node* right;
+        tree_node* parent;
+    };
 
 private:
-	tree_node* root;
-	int rotations;
+    tree_node* root;
+    int	rotations;
 
-	bool find_node(tree_node *node, T val);
-	int	 get_color(tree_node *&node);
-	void rotate_left(tree_node *&node);
-	void rotate_right(tree_node *&node);
-	void delete_tree(tree_node *node);
-	void fix_insert(tree_node *&node);
-	void fix_delete(tree_node *&node);
-	void set_color(tree_node *&node, int color);
-	void tree_pretty_print(tree_node *curr, int depth);
-	tree_node *create_node(T val);
-	tree_node *find_min(tree_node *&node);
-	tree_node *delete_bst(tree_node *&root, T data);
-	tree_node *delete_node(tree_node *node, T val);
-	tree_node *insert_bst(tree_node *&root, tree_node *&node);
+    bool find_node(tree_node* node, T key);
+    int get_color(tree_node*& node);
+    void rotate_left(tree_node*& node);
+    void rotate_right(tree_node*& node);
+    void delete_tree(tree_node* node);
+    void fix_insert(tree_node*& node);
+    void fix_delete(tree_node*& node);
+    void set_color(tree_node*& node, int color);
+    void tree_print(tree_node* curr, int depth);
+    tree_node* create_node(T val);
+    tree_node* find_min(tree_node*& node);
+    tree_node* delete_bst(tree_node*& root, T data);
+    tree_node* insert_bst(tree_node*& root, tree_node*& node);
 
 public:
-    RB_tree(StrategyComparator<T>* compare) : Binary_tree<T>::Binary_tree(compare)
-    {
-        root = nullptr;
-        rotations = 0;
-    }
-    ~RB_tree()
-    {
-        if (root != nullptr)
-            delete_tree(this->root);
-    }
+    Red_black_tree(Comparator<T>* compare);
+    ~Red_black_tree();
 
-	bool find_node(T &&val) override;
-    void add_node(T &&val) override;
-	void delete_node(T &&val) override;
-	bool is_empty();
-	void print_tree();
-	void clear_tree();
-	
-	unsigned int	get_rotations();
+    bool find_node(T&& val) override;
+    bool is_empty();
+    void print_tree();
+    void clear_tree();
+    void add_node(T&& val) override;
+    void delete_node(T&& val) override;
+    int	get_turns();
 };
 
-
+// конструктор
 template <typename T>
-bool RB_tree<T>::find_node(tree_node *node, T val)
+Red_black_tree<T>::Red_black_tree(Comparator<T>* compare) : Binary_tree<T>::Binary_tree(compare)
 {
-	if (node != nullptr) {
-		if (this->comparator->compare(val, (*node).key) == 0)
-			return (true);
-		if (this->comparator->compare(val, (*node).key) < 0)
-			return find_node(node->left, val);
-		else
-			return find_node(node->right, val);
-	}
-	return (false);
+    root = nullptr;
+    rotations = 0;
+}
+
+// деструктор
+template <typename T>
+Red_black_tree<T>::~Red_black_tree()
+{
+    if (root != nullptr)
+        delete_tree(this->root);
+}
+
+// приватные методы
+template <typename T>
+bool Red_black_tree<T>::find_node(tree_node* node, T key)
+{
+    if (node != nullptr)
+    {
+        if (this->comparator->compare(key, (*node).data) != 0)
+            return true;
+        if (this->comparator->compare(key, (*node).data) < 0)
+            return find_node(node->left, key);
+        else
+            return find_node(node->right, key);
+    }
+    return false;
 }
 
 template <typename T>
-int RB_tree<T>::get_color(tree_node *&node)
+int Red_black_tree<T>::get_color(tree_node*& node)
 {
     if (node == nullptr)
         return (BLACK);
@@ -80,62 +91,61 @@ int RB_tree<T>::get_color(tree_node *&node)
 }
 
 template <typename T>
-void RB_tree<T>::rotate_left(tree_node *&node)
+void Red_black_tree<T>::rotate_left(tree_node*& node)
 {
-    tree_node* r_child = node->right;
+    tree_node* right_child = node->right;
 
-    node->right = r_child->left;
+    node->right = right_child->left;
     if (node->right != nullptr)
         node->right->parent = node;
-    r_child->parent = node->parent;
+    right_child->parent = node->parent;
 
     if (node->parent == nullptr)
-        root = r_child;
+        root = right_child;
     else if (node == node->parent->left)
-        node->parent->left = r_child;
+        node->parent->left = right_child;
     else
-        node->parent->right = r_child;
+        node->parent->right = right_child;
 
-    r_child->left = node;
-    node->parent = r_child;
-	rotations++;
+    right_child->left = node;
+    node->parent = right_child;
+    rotations++;
 }
 
 template <typename T>
-void RB_tree<T>::rotate_right(tree_node *&node)
+void Red_black_tree<T>::rotate_right(tree_node*& node)
 {
-    tree_node* l_child = node->left;
+    tree_node* left_child = node->left;
 
-    node->left = l_child->right;
+    node->left = left_child->right;
     if (node->left != nullptr)
         node->left->parent = node;
-    l_child->parent = node->parent;
+    left_child->parent = node->parent;
 
     if (node->parent == nullptr)
-        root = l_child;
+        root = left_child;
     else if (node == node->parent->left)
-        node->parent->left = l_child;
+        node->parent->left = left_child;
     else
-        node->parent->right = l_child;
+        node->parent->right = left_child;
 
-    l_child->right = node;
-    node->parent = l_child;
-	rotations++;
+    left_child->right = node;
+    node->parent = left_child;
+    rotations++;
 }
 
 template <typename T>
-void RB_tree<T>::delete_tree(tree_node *node)
+void Red_black_tree<T>::delete_tree(tree_node* node)
 {
-	if (node != nullptr)
-	{
-		delete_tree(node->left);
-		delete_tree(node->right);
-		delete node;
-	}
+    if (node != nullptr) {
+        delete_tree(node->left);
+        delete_tree(node->right);
+        delete node;
+    }
 }
 
 template <typename T>
-void RB_tree<T>::fix_insert(tree_node *&node)
+void Red_black_tree<T>::fix_insert(tree_node*& node)
 {
     tree_node* parent = nullptr;
     tree_node* grandpa = nullptr;
@@ -152,7 +162,7 @@ void RB_tree<T>::fix_insert(tree_node *&node)
                 set_color(grandpa, RED);
                 node = grandpa;
             }
-			else {
+            else  {
                 if (node == parent->right) {
                     rotate_left(parent);
                     node = parent;
@@ -163,8 +173,8 @@ void RB_tree<T>::fix_insert(tree_node *&node)
                 node = parent;
             }
         }
-		else {
-           tree_node* uncle = grandpa->left;
+        else {
+            tree_node* uncle = grandpa->left;
 
             if (get_color(uncle) == RED) {
                 set_color(uncle, BLACK);
@@ -172,7 +182,7 @@ void RB_tree<T>::fix_insert(tree_node *&node)
                 set_color(grandpa, RED);
                 node = grandpa;
             }
-			else {
+            else {
                 if (node == parent->left) {
                     rotate_right(parent);
                     node = parent;
@@ -188,17 +198,16 @@ void RB_tree<T>::fix_insert(tree_node *&node)
 }
 
 template <typename T>
-void RB_tree<T>::fix_delete(tree_node *&node)
+void Red_black_tree<T>::fix_delete(tree_node*& node)
 {
     if (node == nullptr)
-        return ;
+        return;
     if (node == root) {
         root = nullptr;
-        return ;
+        return;
     }
     if (get_color(node) == RED || get_color(node->left) == RED || get_color(node->right) == RED) {
-        tree_node* child = node->left;
-        child != nullptr ? node->left : node->right;
+        tree_node* child = node->left != nullptr ? node->left : node->right;
 
         if (node == node->parent->left) {
             node->parent->left = child;
@@ -207,7 +216,7 @@ void RB_tree<T>::fix_delete(tree_node *&node)
             set_color(child, BLACK);
             delete node;
         }
-		else {
+        else {
             node->parent->right = child;
             if (child != nullptr)
                 child->parent = node->parent;
@@ -215,7 +224,7 @@ void RB_tree<T>::fix_delete(tree_node *&node)
             delete node;
         }
     }
-	else {
+    else {
         tree_node* sibling = nullptr;
         tree_node* parent = nullptr;
         tree_node* ptr = node;
@@ -230,16 +239,16 @@ void RB_tree<T>::fix_delete(tree_node *&node)
                     set_color(parent, RED);
                     rotate_left(parent);
                 }
-				else {
+                else {
                     if (get_color(sibling->left) == BLACK && get_color(sibling->right) == BLACK) {
                         set_color(sibling, RED);
-                        if(get_color(parent) == RED)
+                        if (get_color(parent) == RED)
                             set_color(parent, BLACK);
                         else
                             set_color(parent, BLACK);
                         ptr = parent;
                     }
-					else {
+                    else {
                         if (get_color(sibling->right) == BLACK) {
                             set_color(sibling->left, BLACK);
                             set_color(sibling, RED);
@@ -254,14 +263,14 @@ void RB_tree<T>::fix_delete(tree_node *&node)
                     }
                 }
             }
-			else {
+            else {
                 sibling = parent->left;
                 if (get_color(sibling) == RED) {
                     set_color(sibling, BLACK);
                     set_color(parent, RED);
                     rotate_right(parent);
                 }
-				else {
+                else {
                     if (get_color(sibling->left) == BLACK && get_color(sibling->right) == BLACK) {
                         set_color(sibling, RED);
                         if (get_color(parent) == RED)
@@ -270,7 +279,8 @@ void RB_tree<T>::fix_delete(tree_node *&node)
                             set_color(parent, BLACK);
                         ptr = parent;
                     }
-					else {
+                    else
+                    {
                         if (get_color(sibling->left) == BLACK) {
                             set_color(sibling->right, BLACK);
                             set_color(sibling, RED);
@@ -296,17 +306,17 @@ void RB_tree<T>::fix_delete(tree_node *&node)
 }
 
 template <typename T>
-void RB_tree<T>::set_color(tree_node *&node, int color)
+void Red_black_tree<T>::set_color(tree_node*& node, int color)
 {
     if (node == nullptr)
-        return ;
+        return;
     node->color = color;
 }
 
 template <typename T>
-void RB_tree<T>::tree_pretty_print(tree_node* curr, int depth)
+void Red_black_tree<T>::tree_print(tree_node* curr, int depth)
 {
-    int i;
+   int i;
 	int loc[1000];
 
     if (curr == nullptr)
@@ -320,30 +330,30 @@ void RB_tree<T>::tree_pretty_print(tree_node* curr, int depth)
 
 	cout << " " << *(curr->key) << ((curr->color == 0) ? " (RED) " : " (BLACK) ") << "\n\n";
     loc[depth] = 1;
-    tree_pretty_print(curr->left,depth+1);
+    tree_print(curr->left,depth+1);
     loc[depth] = 0;
-    tree_pretty_print(curr->right,depth+1);
+    tree_print(curr->right,depth+1);
 }
 
 template <typename T>
-typename RB_tree<T>::tree_node* RB_tree<T>::create_node(T val)
+typename Red_black_tree<T>::tree_node* Red_black_tree<T>::create_node(T val)
 {
     tree_node* node = new tree_node;
 
-	if (node != nullptr) {
-    	node->key = val;
-		node->color = RED;
-		node->left = nullptr;
-		node->right = nullptr;
-		node->parent = nullptr;
-	}
+    if (node != nullptr) {
+        node->data = val;
+        node->color = RED;
+        node->left = nullptr;
+        node->right = nullptr;
+        node->parent = nullptr;
+    }
     return node;
 }
 
 template <typename T>
-typename RB_tree<T>::tree_node* RB_tree<T>::find_min(tree_node *&node)
+typename Red_black_tree<T>::tree_node* Red_black_tree<T>::find_min(tree_node*& node)
 {
-    tree_node *ptr = node;
+    tree_node* ptr = node;
 
     while (ptr->left != nullptr)
         ptr = ptr->left;
@@ -352,89 +362,90 @@ typename RB_tree<T>::tree_node* RB_tree<T>::find_min(tree_node *&node)
 }
 
 template <typename T>
-typename RB_tree<T>::tree_node* RB_tree<T>::delete_bst(tree_node *&root, T data)
+typename Red_black_tree<T>::tree_node* Red_black_tree<T>::delete_bst(tree_node*& root, T data)
 {
     if (root == nullptr)
         return root;
-    if (this->comparator->compare(data, (*root).key) < 0)
+    if (this->comparator->compare(data, (*root).data) < 0)
         return delete_bst(root->left, data);
-    if (this->comparator->compare(data, (*root).key) > 0)
+    if (this->comparator->compare(data, (*root).data) > 0)
         return delete_bst(root->right, data);
     if (root->left == nullptr || root->right == nullptr)
         return root;
 
     tree_node* temp = find_min(root->right);
 
-    root->key = temp->key;
-    return delete_bst(root->right, temp->key);
+    root->data = temp->data;
+    return delete_bst(root->right, temp->data);
 }
 
 template <typename T>
-typename RB_tree<T>::tree_node* RB_tree<T>::insert_bst(tree_node *&root, tree_node *&node)
+typename Red_black_tree<T>::tree_node* Red_black_tree<T>::insert_bst(tree_node*& root, tree_node*& node)
 {
     if (root == nullptr)
         return node;
 
-    if (this->comparator->compare((*node).key, (*root).key) < 0) {
+    if (this->comparator->compare((*node).data, (*root).data) < 0) {
         root->left = insert_bst(root->left, node);
         root->left->parent = root;
     }
-	else if (this->comparator->compare((*node).key, (*root).key) >= 0) {
+    else if (this->comparator->compare((*node).data, (*root).data) >= 0) {
         root->right = insert_bst(root->right, node);
         root->right->parent = root;
     }
     return root;
 }
 
-
+// публичные методы
 template <typename T>
-bool RB_tree<T>::find_node(T &&val)
+bool Red_black_tree<T>::find_node(T&& val)
 {
-	return find_node(root, val);
+    return find_node(root, val);
 }
 
 template <typename T>
-bool RB_tree<T>::is_empty()
+bool Red_black_tree<T>::is_empty()
 {
-	return (root == nullptr);
+    return (root == nullptr);
 }
 
 template <typename T>
-void RB_tree<T>::add_node(T &&val)
+void Red_black_tree<T>::add_node(T&& val)
 {
-	tree_node* node = create_node(val);
+    tree_node* node = create_node(val);
 
-	if (node != nullptr) {
-		root = insert_bst(root, node);
-		fix_insert(node);
-	}
+    if (node != nullptr) {
+        root = insert_bst(root, node);
+        fix_insert(node);
+    }
 }
 
 template <typename T>
-void RB_tree<T>::delete_node(T &&val)
+void Red_black_tree<T>::delete_node(T&& val)
 {
-	tree_node* node = delete_bst(root, val);
+    tree_node* node = delete_bst(root, val);
     fix_delete(node);
 }
 
 template <typename T>
-void RB_tree<T>::print_tree()
+void Red_black_tree<T>::print_tree()
 {
-	if (root != nullptr)
-		tree_pretty_print(this->root, 0);
+    if (root != nullptr)
+        tree_print(this->root, 0);
 }
 
 template <typename T>
-void RB_tree<T>::clear_tree()
+void Red_black_tree<T>::clear_tree()
 {
-	if (root != nullptr)
-		delete_tree(root);
-	root = nullptr;
-	rotations = 0;
+    if (root != nullptr)
+        delete_tree(root);
+    root = nullptr;
+    rotations = 0;
 }
 
 template <typename T>
-unsigned int RB_tree<T>::get_rotations()
+int Red_black_tree<T>::get_turns()
 {
-	return rotations;
+    return rotations;
 }
+
