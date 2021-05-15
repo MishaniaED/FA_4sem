@@ -1,0 +1,11 @@
+﻿  main.cpp
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab7\7.3\7.3\parser.h(64,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab7\7.3\7.3\parser.h(157,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab7\7.3\7.3\avl_tree.h(271,8): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab7\7.3\7.3\avl_tree.h(265): message : во время компиляции функции-члена класс шаблон "void AVL_tree<message_info *>::delete_node(T &&)"
+          with
+          [
+              T=message_info *
+          ]
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab7\7.3\7.3\main.cpp(26): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "AVL_tree<message_info *>"
+  7.3.vcxproj -> C:\Users\misha\source\repos\ВУЗ\4sem\Fund\lab7\7.3\Debug\7.3.exe
