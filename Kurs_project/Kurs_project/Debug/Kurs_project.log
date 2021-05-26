@@ -1,0 +1,16 @@
+﻿  main.cpp
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Lottery_ticket.h(83,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(35,32): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(74,32): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(109,80): warning C4244: аргумент: преобразование "double" в "const unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(135,32): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(174,32): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(209,80): warning C4244: аргумент: преобразование "double" в "const unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(235,32): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(273,32): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(308,80): warning C4244: аргумент: преобразование "double" в "const unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(334,32): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(373,32): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\Generator.h(408,80): warning C4244: аргумент: преобразование "double" в "const unsigned int", возможна потеря данных
+C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Kurs_project\main.cpp(46,21): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Kurs_project.vcxproj -> C:\Users\misha\source\repos\ВУЗ\4sem\Fund\Курсовой проект\Kurs_project\Debug\Kurs_project.exe
