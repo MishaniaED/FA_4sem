@@ -1,0 +1,13 @@
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\bin\Debug\netcoreapp3.1\Logger.exe
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\bin\Debug\netcoreapp3.1\Logger.deps.json
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\bin\Debug\netcoreapp3.1\Logger.runtimeconfig.json
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\bin\Debug\netcoreapp3.1\Logger.runtimeconfig.dev.json
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\bin\Debug\netcoreapp3.1\Logger.dll
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\bin\Debug\netcoreapp3.1\Logger.pdb
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\obj\Debug\netcoreapp3.1\Logger.csprojAssemblyReference.cache
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\obj\Debug\netcoreapp3.1\Logger.AssemblyInfoInputs.cache
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\obj\Debug\netcoreapp3.1\Logger.AssemblyInfo.cs
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\obj\Debug\netcoreapp3.1\Logger.csproj.CoreCompileInputs.cache
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\obj\Debug\netcoreapp3.1\Logger.dll
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\obj\Debug\netcoreapp3.1\Logger.pdb
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Logger\Logger\obj\Debug\netcoreapp3.1\Logger.genruntimeconfig.cache
