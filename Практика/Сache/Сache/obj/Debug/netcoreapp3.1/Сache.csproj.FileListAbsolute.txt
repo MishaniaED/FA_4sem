@@ -1,0 +1,13 @@
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\bin\Debug\netcoreapp3.1\Сache.exe
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\bin\Debug\netcoreapp3.1\Сache.deps.json
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\bin\Debug\netcoreapp3.1\Сache.runtimeconfig.json
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\bin\Debug\netcoreapp3.1\Сache.runtimeconfig.dev.json
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\bin\Debug\netcoreapp3.1\Сache.dll
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\bin\Debug\netcoreapp3.1\Сache.pdb
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\obj\Debug\netcoreapp3.1\Сache.csprojAssemblyReference.cache
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\obj\Debug\netcoreapp3.1\Сache.AssemblyInfoInputs.cache
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\obj\Debug\netcoreapp3.1\Сache.AssemblyInfo.cs
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\obj\Debug\netcoreapp3.1\Сache.csproj.CoreCompileInputs.cache
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\obj\Debug\netcoreapp3.1\Сache.dll
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\obj\Debug\netcoreapp3.1\Сache.pdb
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\Сache\Сache\obj\Debug\netcoreapp3.1\Сache.genruntimeconfig.cache
