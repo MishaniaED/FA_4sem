@@ -1,0 +1,13 @@
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\obj\Debug\netcoreapp3.1\IEnum.csprojAssemblyReference.cache
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\obj\Debug\netcoreapp3.1\IEnum.AssemblyInfoInputs.cache
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\obj\Debug\netcoreapp3.1\IEnum.AssemblyInfo.cs
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\obj\Debug\netcoreapp3.1\IEnum.csproj.CoreCompileInputs.cache
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\bin\Debug\netcoreapp3.1\IEnum.exe
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\bin\Debug\netcoreapp3.1\IEnum.deps.json
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\bin\Debug\netcoreapp3.1\IEnum.runtimeconfig.json
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\bin\Debug\netcoreapp3.1\IEnum.runtimeconfig.dev.json
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\bin\Debug\netcoreapp3.1\IEnum.dll
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\bin\Debug\netcoreapp3.1\IEnum.pdb
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\obj\Debug\netcoreapp3.1\IEnum.dll
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\obj\Debug\netcoreapp3.1\IEnum.pdb
+C:\Users\misha\source\repos\ВУЗ\4sem\Практика\IEnum\IEnum\obj\Debug\netcoreapp3.1\IEnum.genruntimeconfig.cache
